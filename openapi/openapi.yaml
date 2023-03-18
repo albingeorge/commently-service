@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: Commently
+  version: 1.0.0
+servers:
+  - url: localhost:8080/
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+paths:
+  /comment:
+    post:
+      tags:
+        - default
+      summary: Create comment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                url: https://www.urldecoder.io/golang/
+                text: Golang url decoder
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - default
+      summary: Get comments
+      security:
+        - basicAuth: []
+      parameters:
+        - name: url
+          in: query
+          schema:
+            type: string
+          example: https%3A%2F%2Fwww.urldecoder.io%2Fgolang%2F
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
