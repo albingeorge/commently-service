@@ -1,34 +1,55 @@
 package urls
 
 import (
+	"fmt"
+
+	commentsmodel "github.com/albingeorge/commently-service/models/comments"
 	urlmodel "github.com/albingeorge/commently-service/models/urls"
+	commentsrepo "github.com/albingeorge/commently-service/repo/comments"
 	"github.com/albingeorge/commently-service/utils"
 )
 
-var urlsTable map[string]urlmodel.Url
+var urlsTableIndexedByUrl map[string]*urlmodel.Url
 
 type DbImpl struct{}
 
-func (db *DbImpl) Create(url string) urlmodel.Url {
-	if v, ok := urlsTable[url]; ok {
+func init() {
+	urlsTableIndexedByUrl = map[string]*urlmodel.Url{}
+}
+func (db *DbImpl) Create(url string) *urlmodel.Url {
+	if v, ok := urlsTableIndexedByUrl[url]; ok {
 		return v
 	}
 	id := utils.GenerateRandomId(8)
 	currentUrl := urlmodel.Url{Id: id, Name: url}
 
-	if urlsTable == nil {
-		urlsTable = map[string]urlmodel.Url{url: currentUrl}
-	} else {
-		urlsTable[url] = currentUrl
-	}
-	return currentUrl
+	urlsTableIndexedByUrl[url] = &currentUrl
+
+	return &currentUrl
 }
 
-func (db *DbImpl) Get() []urlmodel.Url {
-	data := []urlmodel.Url{}
-	for _, v := range urlsTable {
+func (db *DbImpl) Fetch(url string) (*urlmodel.Url, error) {
+	if v, ok := urlsTableIndexedByUrl[url]; ok {
+		return v, nil
+	}
+	return &urlmodel.Url{}, fmt.Errorf("error fetching url: %q", url)
+}
+
+func (db *DbImpl) Get() []*urlmodel.Url {
+	data := []*urlmodel.Url{}
+	for _, v := range urlsTableIndexedByUrl {
 		data = append(data, v)
 	}
 
 	return data
+}
+
+func (db *DbImpl) GetComments(url string) ([]*commentsmodel.Comment, error) {
+	urlEntity, err := db.Fetch(url)
+	if err != nil {
+		return []*commentsmodel.Comment{}, err
+	}
+	urlId := urlEntity.Id
+
+	return commentsrepo.GetRepo().GetAll(urlId), nil
 }
