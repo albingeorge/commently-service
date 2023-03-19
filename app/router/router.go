@@ -52,6 +52,7 @@ func SetupRouter() *gin.Engine {
 	*/
 	authorized.POST("comment", controllers.CommentCreate)
 	authorized.GET("comment", controllers.CommentFetch)
+	authorized.GET("urls", controllers.UrlsFetch)
 
 	return r
 }

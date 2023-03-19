@@ -54,3 +54,13 @@ func CommentFetch(c *gin.Context) {
 	comments := Db[decodedValue]
 	c.JSON(http.StatusOK, gin.H{"comments": comments})
 }
+
+func UrlsFetch(c *gin.Context) {
+	urls := make([]string, len(Db))
+	i := 0
+	for k := range Db {
+		urls[i] = k
+		i++
+	}
+	c.JSON(http.StatusOK, gin.H{"urls": urls})
+}
