@@ -21,8 +21,8 @@ paths:
             schema:
               type: object
               example:
-                url: https://www.urldecoder.io/golang/
-                text: Golang url decoder
+                url: https://www.google.com/
+                text: Some random comment
       security:
         - basicAuth: []
       responses:
@@ -33,7 +33,7 @@ paths:
     get:
       tags:
         - default
-      summary: Get comments
+      summary: Get comments for URL
       security:
         - basicAuth: []
       parameters:
@@ -41,7 +41,19 @@ paths:
           in: query
           schema:
             type: string
-          example: https%3A%2F%2Fwww.urldecoder.io%2Fgolang%2F
+          example: https%3A%2F%2Fwww.google.com%2F
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /urls:
+    get:
+      tags:
+        - default
+      summary: Get all URLs
+      security:
+        - basicAuth: []
       responses:
         '200':
           description: Successful response
