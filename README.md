@@ -5,8 +5,13 @@ Add comments to any webpage
 ## Setup
 
 1. Clone the repo
-2. cd to `app` directory
-3. `go run main.go`
+2. `make run`
+
+## Run via Docker
+
+```bash
+make docker-run
+```
 
 ## API Specification
 
