@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"net/url"
 
-	commentrepo "github.com/albingeorge/commently-service/repo/comments"
-	urlrepo "github.com/albingeorge/commently-service/repo/urls"
+	commentrepo "github.com/albingeorge/commently-service/app/repo/comments"
+	urlrepo "github.com/albingeorge/commently-service/app/repo/urls"
 	"github.com/gin-gonic/gin"
 )
 

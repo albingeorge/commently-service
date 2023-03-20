@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/albingeorge/commently-service/controllers"
+	"github.com/albingeorge/commently-service/app/controllers"
 	"github.com/gin-gonic/gin"
 )
 

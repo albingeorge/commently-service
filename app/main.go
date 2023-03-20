@@ -1,6 +1,6 @@
 package main
 
-import "github.com/albingeorge/commently-service/router"
+import "github.com/albingeorge/commently-service/app/router"
 
 func main() {
 	r := router.SetupRouter()

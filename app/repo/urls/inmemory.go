@@ -3,10 +3,10 @@ package urls
 import (
 	"fmt"
 
-	commentsmodel "github.com/albingeorge/commently-service/models/comments"
-	urlmodel "github.com/albingeorge/commently-service/models/urls"
-	commentsrepo "github.com/albingeorge/commently-service/repo/comments"
-	"github.com/albingeorge/commently-service/utils"
+	commentsmodel "github.com/albingeorge/commently-service/app/models/comments"
+	urlmodel "github.com/albingeorge/commently-service/app/models/urls"
+	commentsrepo "github.com/albingeorge/commently-service/app/repo/comments"
+	"github.com/albingeorge/commently-service/app/utils"
 )
 
 var urlsTableIndexedByUrl map[string]*urlmodel.Url

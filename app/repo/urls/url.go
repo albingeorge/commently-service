@@ -1,8 +1,8 @@
 package urls
 
 import (
-	commentsmodel "github.com/albingeorge/commently-service/models/comments"
-	urlmodel "github.com/albingeorge/commently-service/models/urls"
+	commentsmodel "github.com/albingeorge/commently-service/app/models/comments"
+	urlmodel "github.com/albingeorge/commently-service/app/models/urls"
 )
 
 type Repository interface {

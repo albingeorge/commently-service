@@ -1,6 +1,6 @@
 package comments
 
-import commentmodel "github.com/albingeorge/commently-service/models/comments"
+import commentmodel "github.com/albingeorge/commently-service/app/models/comments"
 
 type Repository interface {
 	Create(urlId string, text string) commentmodel.Comment

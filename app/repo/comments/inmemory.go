@@ -1,8 +1,8 @@
 package comments
 
 import (
-	commentsmodel "github.com/albingeorge/commently-service/models/comments"
-	"github.com/albingeorge/commently-service/utils"
+	commentsmodel "github.com/albingeorge/commently-service/app/models/comments"
+	"github.com/albingeorge/commently-service/app/utils"
 )
 
 // Indexed by comment id
