@@ -3,6 +3,7 @@ build:
 run: build
 	./bin/server
 tidy:
+	(cd app && go fmt ./...)
 	go mod tidy
 docker-build:
 	docker build -t albingeorge/commently-service .
